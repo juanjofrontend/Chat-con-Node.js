@@ -11,9 +11,22 @@ app.get('/hola-mundo', function(req, res){
     res.status(200).send('Hola mundo desde una ruta');
 });
 
+
+
+var messages = [{
+    id: 1,
+    texto: 'Bienvenido al chat privado NodeJS de Juanjo ',
+    nickname: 'Bot - Salachat'
+    
+}];
+
+
+
 io.on('connection', function(socket){
     
   console.log("El cliente con IP: "+socket.handshake.address+" se ha conectado..."); 
+    
+    socket.emit('messages', messages);
     
     
 });
